@@ -1,0 +1,1 @@
+Reads data from the specified file or input/output (I/O) device.
