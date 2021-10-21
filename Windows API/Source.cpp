@@ -80,9 +80,11 @@ public:
 			char a;
 			bool read = ReadFile(h1, &a, 1, &z2, NULL);
 			while (read && z2 != 0) {
+				std::cout << a <<" ";
 				WriteFile(h2, &a, z2, &z1, NULL);
 				read = ReadFile(h1, &a, 1, &z2, NULL);
 			}
+			std::cout << std::endl;
 			return true;
 		}
 		return false;
@@ -156,7 +158,7 @@ int _tmain(int argc, TCHAR* argv[]) {
 
 	std::cout << "Count of arguments:  " << argc << "\n///////////////////////////" << std::endl;
 
-	/*if (WindowsAPI::createFile(argv[1]) != INVALID_HANDLE_VALUE) {
+	if (WindowsAPI::createFile(argv[1]) != INVALID_HANDLE_VALUE) {
 		std::cout << "File was created\n\n";
 	}
 	else {
@@ -192,16 +194,12 @@ int _tmain(int argc, TCHAR* argv[]) {
 		std::cout << "File was't copied\n\n";
 	}
 
-
 	if (WindowsAPI::readWrite(argv[7], argv[8])) {
 		std::cout << "Text was read and written\n\n";
 	}
 	else {
 		std::cout << "Something went wrong\n\n";
-	}*/
-
-
-
+	}
 
 	if (WindowsAPI::createDirectory(argv[9])) {
 		std::cout << "Directory was created\n\n";
