@@ -9,17 +9,21 @@ int _tmain(int argc, TCHAR* argv[]) {
 	const char* command = "Notepad C:\\Users\\User\\Desktop\\Operating Systems\\WindowsAPI\\filesForProcessing\\openByNotepad.txt";
 	if (WindowsAPI::winExec(command) < 32) {
 		WindowsAPI::messageBox("something went wrong","Fail");
+		std::cout << "WinExec: something went wrong\n\n";
 	}
 	else {
 		WindowsAPI::messageBox("Press OK button!!!", "Success");
+		std::cout << "WinExec: Success\n\n";
 	}
 
 
 	if (WindowsAPI::shellExecute(L"open", argv[11]) < (HANDLE)32) {
 		WindowsAPI::messageBox("something went wrong", "Fail");
+		std::cout << "ShellExecute: something went wrong\n\n";
 	}
 	else {
 		WindowsAPI::messageBox("Press OK button!!!", "Success");
+		std::cout << "ShellExecute: Success\n\n";
 	}
 
 	STARTUPINFO si;
@@ -30,7 +34,7 @@ int _tmain(int argc, TCHAR* argv[]) {
 	}
 	else
 	{
-		std::cout << "Creating process success" << std::endl;
+		std::cout << "Creating process: Success" << std::endl;
 		std::cout << "Porcess ID: " << pi.dwProcessId << std::endl;
 		std::cout << "Thread ID: " << pi.dwThreadId << std::endl;
 
