@@ -3,10 +3,11 @@
 
 //argv[11]="C:\Users\User\Desktop\Operating Systems\WindowsAPI\filesForProcessing\shellExecute.txt"(1)(not empty)
 //argv[12]="C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"(app)
+//argv[13]=C:\Users\User\Desktop\Operating Systems\WindowsAPI\filesForProcessing\helloWorld\Debug\helloWorld.exe"(app)
 
 
 int _tmain(int argc, TCHAR* argv[]) {
-	const char* command = "Notepad C:\\Users\\User\\Desktop\\Operating Systems\\WindowsAPI\\filesForProcessing\\openByNotepad.txt";
+	/*const char* command = "Notepad C:\\Users\\User\\Desktop\\Operating Systems\\WindowsAPI\\filesForProcessing\\openByNotepad.txt";
 	if (WindowsAPI::winExec(command) < 32) {
 		WindowsAPI::messageBox("something went wrong","Fail");
 		std::cout << "WinExec: something went wrong\n\n";
@@ -26,23 +27,50 @@ int _tmain(int argc, TCHAR* argv[]) {
 		std::cout << "ShellExecute: Success\n\n";
 	}
 
-	STARTUPINFO si;
-	PROCESS_INFORMATION pi;
-	if (!WindowsAPI::createProcess(argv[12],si,pi)) {
+	STARTUPINFO si1;
+	PROCESS_INFORMATION pi1;
+	if (!WindowsAPI::createProcess(argv[12],si1,pi1)) {
 		std::cout << "Creating process was failed" << std::endl;
 		WindowsAPI::errorTextOutput();
 	}
 	else
 	{
 		std::cout << "Creating process: Success" << std::endl;
-		std::cout << "Porcess ID: " << pi.dwProcessId << std::endl;
-		std::cout << "Thread ID: " << pi.dwThreadId << std::endl;
+		std::cout << "Porcess ID: " << pi1.dwProcessId << std::endl;
+		std::cout << "Thread ID: " << pi1.dwThreadId << std::endl;
 
-		WaitForSingleObject(pi.hProcess, INFINITE);
-		CloseHandle(pi.hThread);
-		CloseHandle(pi.hProcess);
+		WaitForSingleObject(pi1.hProcess, INFINITE);
+
+		DWORD exitCode;
+		GetExitCodeProcess(pi1.hProcess, &exitCode);
+		std::cout << "Exit code: " << exitCode << std::endl;
+
+		CloseHandle(pi1.hThread);
+		CloseHandle(pi1.hProcess);
+	}	*/
+
+
+	STARTUPINFO si2;
+	PROCESS_INFORMATION pi2;
+	if (!WindowsAPI::createProcess(argv[13], si2, pi2)) {
+		std::cout << "Creating process was failed" << std::endl;
+		WindowsAPI::errorTextOutput();
 	}
+	else
+	{
+		std::cout << "Creating process: Success" << std::endl;
+		std::cout << "Porcess ID: " << pi2.dwProcessId << std::endl;
+		std::cout << "Thread ID: " << pi2.dwThreadId << std::endl;
 
+		WaitForSingleObject(pi2.hProcess, INFINITE);
+
+		DWORD exitCode;
+		GetExitCodeProcess(pi2.hProcess, &exitCode);
+		std::cout << "Exit code: " << exitCode << std::endl;
+
+		CloseHandle(pi2.hThread);
+		CloseHandle(pi2.hProcess);
+	}
 	return 0;
 }
 

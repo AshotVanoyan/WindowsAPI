@@ -159,5 +159,5 @@ HANDLE WindowsAPI::shellExecute(const wchar_t* command, TCHAR* path) {
 bool WindowsAPI::createProcess(TCHAR* path, STARTUPINFO& si, PROCESS_INFORMATION& pi) {
 	ZeroMemory(&si, sizeof(si));
 	ZeroMemory(&pi, sizeof(pi));
-	return CreateProcess(path, NULL, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi);
+	return CreateProcess(path, NULL, NULL, NULL, FALSE, NORMAL_PRIORITY_CLASS, NULL, NULL, &si, &pi);
 }
